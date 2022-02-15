@@ -5,11 +5,11 @@
 </div>
 
 <% @items.each do |item| %>
-  <h3>
+  <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; font-size: 2em;">
     <%= item.item %>
-    <%= link_to "Edit", edit_item_path(item) %>
-    <%= button_to "Destroy", item, method: :delete %>
-  </h3>
+    <%= link_to '<i class="fa-solid fa-pencil"></i>'.html_safe, edit_item_path(item), class: "btn btn-link" %>
+    <%= button_to '<i class="fa-solid fa-check"></i>'.html_safe, item, method: :delete, class: "btn btn-link", style: "display: block" %>
+  </div>
 <% end %>
 
 <%= link_to "New item", new_item_path %>
