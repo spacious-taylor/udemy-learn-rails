@@ -1,9 +1,24 @@
+<style media="screen">
+img {
+  max-width: 200px;
+  max-height: 200px;
+}
+</style>
+
+
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
+<h1><%= @article.title %></h1>
+
+<p>
+<%= image_tag @article.image_url, align: 'right' %>
+<%= @article.body %>
+</p>
 
 <div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <% if user_signed_in? %>
+    <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <% end %>
   <%= link_to "Back to articles", articles_path %>
 
   <%= button_to "Destroy this article", @article, method: :delete %>
