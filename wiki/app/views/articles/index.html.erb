@@ -1,6 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Articles</h1>
+<% if request.original_url.split("=").last.include? '/' %>
+  <h1>All Articles</h1>
+<% else %>
+  <h1>All <%= Category.find(request.original_url.split("=").last).name %> Articles</h1>
+<% end %>
+
 
 <div id="articles">
   <% @articles.each do |article| %>
