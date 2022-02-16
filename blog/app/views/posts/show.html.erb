@@ -1,17 +1,30 @@
 <p style="color: green"><%= notice %></p>
+<%= content_for(:title, @post.title) %>
 
-<%= render @post %>
+<h4><%= link_to "< Back", posts_path %></h4>
 
-<div>
-  <% if user_signed_in? %>
-    <%= link_to "Edit this post", edit_post_path(@post) %> | 
-  <% end %>
-  <%= link_to "Back to posts", posts_path %>
-
-  <% if user_signed_in? %>
-    <%= button_to "Destroy this post", @post, method: :delete %>
-  <% end %>
+<div class="page-header">
+  <h1 align="center">
+    <%= @post.title %>
+  </h1>
 </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 align="center">
+      <%= @post.body %>
+    </h3>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <div class="btn-group pull-right">
+    <div class="btn-group">
+      <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default" %>
+      <%= button_to "Destroy", @post, method: :delete, class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
 
 <%= social_share_button_tag(@post.title) %>
 <div class="fb-comments" data-href="<%= request.url %>" data-width="470" data-num-posts="3"></div>
@@ -25,3 +38,4 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+

@@ -11,22 +11,20 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-primary">
-      <div class="container-fluid">
-        <%= link_to "Blog", root_path, class: "navbar-brand" %>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-          <% if user_signed_in? %>
-            <%= link_to "New post", new_post_path, class: "nav-link" %>
-          <% else %>
-            <%= link_to "Admin Login", new_user_session_path, class: "nav-link" %>
-          <% end %>
-          </li>
-        </ul>
+    <nav class="navbar navbar-inverse">
+      <%= link_to 'My Blog', root_path, class: 'navbar-brand' %>
+      <div class="container">
+        <p class="navbar-text navbar-right">
+        <% if user_signed_in? %>
+          <%= link_to 'New Post', new_post_path, class: 'navbar-link' %>
+        <% else %>
+          <%= link_to 'Admin Login', new_user_session_path, class: 'navbar-link' %>
+        <% end %>
+        </p>
       </div>
     </nav>
 
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-10 col-md-offset-1">
       <%= yield %>
     </div>
   </body>
